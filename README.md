@@ -61,6 +61,7 @@ optimizer.run(fmax=0.001, steps=500)
 # --- Output results ---
 relaxed_energy = atoms.get_potential_energy()
 print(f"Relaxed GAP energy: {relaxed_energy:.6f} eV")
+```
 
 ### 📌 Requirements
 

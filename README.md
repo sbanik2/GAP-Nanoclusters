@@ -78,7 +78,7 @@ Absolutely. Here's a generalized version of the **LAMMPS input script** with a c
 
 ### Using GAP with LAMMPS
 
-To perform structure relaxation with a GAP model in LAMMPS, use the following template. Ensure your LAMMPS build includes the **QUIP interface**.
+To perform structure relaxation with a GAP model in LAMMPS, use the following template. Ensure your **[LAMMPS](https://www.lammps.org/#gsc.tab=0)**  build includes the **QUIP interface**.
 
 ```lammps
 dimension       3
@@ -94,9 +94,6 @@ pair_coeff      * * path/to/your_gap_model.xml "Potential xml_label=Your_Label" 
 
 neighbor        2.0 bin
 neigh_modify    every 2 delay 0 check no
-
-compute         MSD all msd com yes
-variable        M equal c_MSD[4]
 
 # Minimization
 minimize        1.0e-10 1.0e-10 10000 10000

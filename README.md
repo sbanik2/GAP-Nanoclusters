@@ -1,7 +1,7 @@
 # Gaussian Approximation Potentials for Elemental Nanoclusters
 
 <p align="center">
-  <img src="./index.png" alt="GAP Nanocluster Overview" width="800">
+  <img src="./ptable.png" alt="GAP Nanocluster Overview" width="800">
 </p>
 
 This repository contains **Gaussian Approximation Potential (GAP)** models for **54 elemental nanocluster systems** across the periodic table. For each element, the following are provided:

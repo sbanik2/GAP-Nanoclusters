@@ -72,6 +72,51 @@ print(f"Relaxed GAP energy: {relaxed_energy:.6f} eV")
 * `ase`
 * `quippy` (install via QUIP or conda build of `libatoms`)
 
+Absolutely. Here's a generalized version of the **LAMMPS input script** with a clean format for a general audience, suitable for placing in your `README.md` under the LAMMPS usage section:
+
+---
+
+### Using GAP with LAMMPS
+
+To perform structure relaxation with a GAP model in LAMMPS, use the following template. Ensure your LAMMPS build includes the **QUIP interface**.
+
+```lammps
+dimension       3
+units           metal
+boundary        f f f
+atom_style      atomic    
+
+read_data       structure.geo   # Replace with your LAMMPS data file
+
+
+pair_style      quip
+pair_coeff      * * path/to/your_gap_model.xml "Potential xml_label=Your_Label" atomic_number
+
+neighbor        2.0 bin
+neigh_modify    every 2 delay 0 check no
+
+compute         MSD all msd com yes
+variable        M equal c_MSD[4]
+
+# Minimization
+minimize        1.0e-10 1.0e-10 10000 10000
+
+write_data      relaxed_structure.data
+```
+
+---
+
+Certainly! Here's a clean and professional **Citation** section you can include at the bottom of your `README.md`:
+
+---
+
+## 📖 Citation
+
+If you use the GAP models, dataset, or scripts from this repository in your research, please cite the following:
+
+**Suvo Banik et al.**, *Gaussian Approximation Potentials for Elemental Nanoclusters* (2025).
+
+> DOI / arXiv / Journal link – *\[To be updated upon publication]*
 
 ---
 

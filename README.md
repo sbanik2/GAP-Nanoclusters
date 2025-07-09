@@ -22,9 +22,13 @@ This resource aims to support the development, benchmarking, and evaluation of m
 
 ## Dataset
 
+
 The training and test datasets are made available **upon request**.
 
 The **ground state polymorphs** of the elemental nanoclusters and a portion of the **validation dataset** are publicly accessible via the [Quantum Cluster Database (QCD)](https://muellergroup.jhu.edu/qcd/).
+
+Additionally, all QCD configurations **relaxed using the GAP model** are provided in this repository under the `qcd_gap_relaxed/` directory.
+
 
 ---
 

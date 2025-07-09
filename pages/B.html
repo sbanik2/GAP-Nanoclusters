@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> B - Element Information</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>B</h1>
+        <a href="../index.html" class="back-btn">← Back to Periodic Table</a>
+    </header>
+
+    <div class="container">
+
+        <!-- Basic Information Section -->
+        <section class="row full-width basic-info">
+            <h2>Basic Information</h2>
+            <div class="info-container">
+                <p><strong>Element:</strong> B</p>
+                <p><strong>Atomic Number:</strong> 5</p>
+                <p><strong>Type:</strong> Metalloid</p>
+                <p><strong>r<sub>cut</sub> (GAP):</strong> 2.25 Å</p>
+            </div>
+        </section>
+
+        <!-- Dataset Section -->
+        <section class="row two-columns dataset-grid">
+            <div class="column section-container">
+                <h2>Dataset</h2>
+                <img src="../plots/B/dataset.png" alt="B Dataset">
+            </div>
+
+            <div class="column section-container">
+                <h2>Energy/Force</h2>
+                <img src="../plots/B/E_F_parity.png" alt="B Energy vs Force">
+            </div>
+        </section>
+
+        <!-- Lattice Section -->
+        <section class="row two-columns lattice-grid">
+            <div class="column section-container">
+                <h2>Lattice Parameters</h2>
+                <img src="../plots/B/lattice.png" alt="B Lattice">
+            </div>
+
+            <div class="column section-container">
+                <h2>Ground State Structures</h2>
+                <img src="../plots/B/order.png" alt="B Ground State">
+            </div>
+        </section>
+        
+        <!-- Dynamics Section -->
+        <section class="row two-columns dynamics-grid">
+            <div class="column section-container">
+                <h2>Dynamic Stability</h2>
+                <img src="../plots/B/dynamics.png" alt="B Lattice">
+            </div>
+
+            <div class="column section-container">
+                <h2>Normal Mode</h2>
+                <img src="../plots/B/NM.png" alt="B Ground State">
+            </div>
+        </section>
+
+        <!-- Error Comparison Section -->
+        <section class="row four-columns comparison-grid">
+            <div class="column section-container">
+                <h2>Δ<sub>Energy</sub></h2>
+                <img src="../plots/B/del_E.png" alt="Energy Comparison">
+            </div>
+
+            <div class="column section-container">
+                <h2>Δ<sub>Force</sub></h2>
+                <img src="../plots/B/del_F.png" alt="Force Comparison">
+            </div>
+
+            <div class="column section-container">
+                <h2>Δ<sub>Cohesive</sub></h2>
+                <img src="../plots/B/GS_spider.png" alt="Cohesive Comparison">
+            </div>
+
+            <div class="column section-container">
+                <h2>Δ<sub>Lattice</sub></h2>
+                <img src="../plots/B/del_lattice_gap.png" alt="Lattice Comparison">    
+            </div>
+            
+            <div class="column section-container">
+                <h2>Δ<sub>Lattice</sub></h2>
+                <img src="../plots/B/del_lattice_tersoff.png" alt="Lattice Comparison">    
+            </div>
+        </section>
+
+        <!-- Downloads Section -->
+        <section class="row downloads-section">
+            <h2>Downloads</h2>
+            <div class="download-links">
+                <div class="column">
+                    <a href="gap_files/B_gap.xml" class="download-btn gap">GAP File</a>
+                </div>
+                <div class="column">
+                    <a href="tersoff_files/B.tersoff" class="download-btn tersoff">Tersoff File</a>
+                </div>
+                
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

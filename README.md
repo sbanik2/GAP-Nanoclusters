@@ -103,10 +103,6 @@ write_data      relaxed_structure.data
 
 ---
 
-Certainly! Here's a clean and professional **Citation** section you can include at the bottom of your `README.md`:
-
----
-
 ## 📖 Citation
 
 If you use the GAP models, dataset, or scripts from this repository in your research, please cite the following:

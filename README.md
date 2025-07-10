@@ -158,7 +158,6 @@ Please cite the following if you use this repository, models, or the associated 
 }
 ```
 
----
 
 ###  To cite the **Tersoff-HyBOP models**:
 

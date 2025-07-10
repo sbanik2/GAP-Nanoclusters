@@ -183,13 +183,15 @@ img {
 /* Download Links Container - Two Columns Layout */
 .download-links {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Three equally spaced columns */
+    grid-template-columns: repeat(2, 1fr); /* Correct: Two equally spaced columns */
     gap: 30px;
-    justify-content: center;
+    justify-items: center; /* Ensure buttons are centered in each grid cell */
     align-items: center;
-    max-width: 80%;
+    max-width: 400px; /* Tighter width for better spacing */
     margin: auto;
+    padding: 10px 0;
 }
+
 
 /* Individual Columns */
 .column {
@@ -199,16 +201,18 @@ img {
 
 /* Download Buttons */
 .download-btn {
-    padding: 5px 10px;
+    padding: 8px 16px;
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;
     border-radius: 5px;
     color: white;
     transition: 0.3s ease;
-    width: 120px;
+    width: 150px;       /* Adjust width as needed */
     text-align: center;
+    display: inline-block;
 }
+
 
 /* Specific Colors for Each File Type */
 .gap {

@@ -16,7 +16,7 @@ This repository contains **Gaussian Approximation Potential (GAP)** models for *
 * Comparison of energy and force errors with Tersoff models [Manna *et al.* (2022)](https://www.nature.com/articles/s41467-021-27849-6)
 * Lattice parameter and cohesive energy prediction comparisons
 
-This resource aims to support the development, benchmarking, and evaluation of machine-learning interatomic potentials against traditional models in low-dimensional nanocluster systems.
+ 👉 sbanik2.github.io/GAP-Nanoclusters/
 
 ---
 

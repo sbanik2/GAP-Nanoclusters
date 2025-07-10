@@ -183,7 +183,7 @@ img {
 /* Download Links Container - Two Columns Layout */
 .download-links {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three equally spaced columns */
+    grid-template-columns: repeat(2, 1fr); /* Three equally spaced columns */
     gap: 30px;
     justify-content: center;
     align-items: center;

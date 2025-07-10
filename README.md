@@ -101,16 +101,43 @@ minimize        1.0e-10 1.0e-10 10000 10000
 write_data      relaxed_structure.data
 ```
 
----
-
-## 📖 Citation
-
-If you use the GAP models, dataset, or scripts from this repository in your research, please cite the following:
-
-**Suvo Banik et al.**, *Gaussian Approximation Potentials for Elemental Nanoclusters* (2025).
-
-> DOI / arXiv / Journal link – *\[To be updated upon publication]*
 
 ---
+
+### Using Tersoff-HyBOP Potentials in LAMMPS
+
+The Tersoff-HyBOP model used here consists of **two components**:
+
+* A **Tersoff-style (BOP-like)** three-body interaction potential
+* A **Lennard-Jones (LJ) scaling** component for long-range dispersion interactions
+
+All model parameters are stored in individual `.json` files per element . Each file includes:
+
+* A `tersoff` section with named Tersoff parameters
+* A `scaling` section with `epsilon`, `sigma`, `k1`, `k2`, and `RcLR` used in `lj/cut/scaling`
+
+To convert these `.json` files into **LAMMPS-ready inputs**, use the Jupyter notebook:
+
+> 📓 `tersoff_lammps_template.ipynb`
+
+This notebook automates:
+
+* Generating the `.tersoff` file used with `pair_style tersoff`
+* Writing a matching `LAMMPS input script (.in)` that uses `hybrid/overlay` with `tersoff` and `lj/cut/scaling` styles.
+
+---
+
+####  LAMMPS Setup example:
+
+```lammps
+pair_style hybrid/overlay tersoff lj/cut/scaling 14
+pair_coeff * * tersoff Ag.tersoff Ag
+pair_coeff 1 1 lj/cut/scaling epsilon sigma k1 k2 RcLR
+```
+
+Make sure to replace the last line with the actual values, which are automatically extracted by the script.
+
+---
+
 
 

@@ -139,5 +139,44 @@ Make sure to replace the last line with the actual values, which are automatical
 
 ---
 
+Thank you — here is the complete and updated **BibTeX citation block** with both your **GAP model** and **HyBOP model** references, ready for inclusion in a `CITATION.bib` file or your README:
+
+---
+
+## 📖 Citation
+
+Please cite the following if you use this repository, models, or the associated parameter conversion workflows:
+
+###  To cite the **GAP models** for elemental nanoclusters:
+
+```bibtex
+@article{banik2024generalized,
+  title     = {Generalized Machine Learning Potential Models for Elemental Nanoclusters},
+  author    = {Banik, Suvo and Aggarwal, Abhishek and Manna, Sukriti and Dutta, Partha Sarathi and Sankaranarayanan, Subramanian KRS},
+  journal   = ,
+  year      = {2024}
+}
+```
+
+---
+
+###  To cite the **Tersoff-HyBOP models**:
+
+```bibtex
+@article{manna2022learning,
+  title     = {Learning in continuous action space for developing high dimensional potential energy models},
+  author    = {Manna, Sukriti and Loeffler, Troy D and Batra, Rohit and Banik, Suvo and Chan, Henry and Varughese, Bilvin and Sasikumar, Kiran and Sternberg, Michael and Peterka, Tom and Cherukara, Mathew J and others},
+  journal   = {Nature Communications},
+  volume    = {13},
+  number    = {1},
+  pages     = {368},
+  year      = {2022},
+  publisher = {Nature Publishing Group UK London},
+  doi       = {10.1038/s41467-021-27885-0}
+}
+```
+
+---
+
 
 

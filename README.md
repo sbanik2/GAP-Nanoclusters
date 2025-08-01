@@ -53,13 +53,8 @@ To run the model fitting process, the following files must be provided in the di
 
 * **`train.xyz`**: Training data file containing atomic configurations and energies.
 * **`test.xyz`**: Test data file for validation.
-* **`ground_state.xyz`**: Ground-state structure file for energy calculations.
-* **`param.txt`**: A file containing the fitting parameters (see below for details).
-
-The directory also contains additional scripts for performing calculations and analysis:
-
-* **`calculator.py`**: Script for performing calculations during the fitting process.
-* **`final_calculation.py`**: Script for additional analysis after fitting the model.
+* **`ground_state.xyz`**: Ground-state structure file.
+* **`param.txt`**: A file containing the fitting parameters.
 
 #### 4. `param.txt` File Structure
 

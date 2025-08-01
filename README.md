@@ -210,10 +210,6 @@ Make sure to replace the last line with the actual values, which are automatical
 
 ---
 
-Thank you — here is the complete and updated **BibTeX citation block** with both your **GAP model** and **HyBOP model** references, ready for inclusion in a `CITATION.bib` file or your README:
-
----
-
 ## 📖 Citation
 
 Please cite the following if you use this repository, models, or the associated parameter conversion workflows:

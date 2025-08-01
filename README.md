@@ -212,7 +212,7 @@ Make sure to replace the last line with the actual values, which are automatical
 
 ## 📖 Citation
 
-Please cite the following if you use this repository, models, or the associated parameter conversion workflows:
+Please cite the following if you use this repository, or models:
 
 ###  To cite the **GAP models** for elemental nanoclusters:
 

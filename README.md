@@ -194,7 +194,7 @@ This notebook automates:
 ```lammps
 pair_style hybrid/overlay tersoff lj/cut/scaling 14
 pair_coeff * * tersoff Ag.tersoff Ag
-pair_coeff 1 1 lj/cut/scaling epsilon sigma k1 k2 RcLR
+pair_coeff 1 1 lj/cut/scaling epsilon sigma k1 k2 0 RcLR
 ```
 
 ---

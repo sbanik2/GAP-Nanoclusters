@@ -32,9 +32,6 @@ Additionally, all QCD configurations **relaxed using the GAP model** are provide
 
 ---
 
-Here is the refined and corrected version of your **README** section:
-
----
 
 ## Fitting a GAP Model
 

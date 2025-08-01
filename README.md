@@ -23,7 +23,7 @@ Webpage 👉 [sbanik2.github.io/GAP-Nanoclusters/](https://sbanik2.github.io/GAP
 ## Dataset
 
 
-The training and test datasets are made available **upon request**.
+The complete training and test datasets are made available **upon request**.
 
 The **ground state polymorphs** of the elemental nanoclusters and a portion of the **validation dataset** are publicly accessible via the [Quantum Cluster Database (QCD)](https://muellergroup.jhu.edu/qcd/).
 
@@ -34,8 +34,6 @@ Additionally, all QCD configurations **relaxed using the GAP model** are provide
 
 
 ## Fitting a GAP Model
-
-To fit a **Gaussian Approximation Potential (GAP)** model, follow the steps outlined below. This section describes the process of fitting a GAP model using the provided scripts in this repository.
 
 #### 1. Prerequisites
 
@@ -66,9 +64,9 @@ The `param.txt` file contains the following comma-separated values:
 
 ##### Parameter Breakdown:
 
-1. **Cutoff (`4.75`)**: Defines the **cutoff distance** for atomic interactions in the SOAP kernel.
-2. **`sigma_energy` for Cluster (`0.005`)**: Controls the **regularization** corresponding to energy for the **cluster modality**.
-3. **`sigma_energy` for Bulk (`0.0001`)**: Controls the **regularization** corresponding to energy for the **bulk modality**.
+1. **Cutoff (`4.75`)**: Defines the **cutoff distance** used.
+2. **`sigma_energy` for Cluster (`0.005`)**: Controls the **regularization** corresponding to energy for the **clusters**.
+3. **`sigma_energy` for Bulk (`0.0001`)**: Controls the **regularization** corresponding to energy for the **bulk data**.
 4. **Scaling Factor (`5`)**: This is the **multiplication factor** for **sigma\_force**. The relationship is:
    `sigma_force = Scaling factor * sigma_energy` for a given modality.
 
@@ -78,7 +76,7 @@ These values are used in the **`gap-fit.py`** script to define the fitting param
 
 #### 5. Running the GAP Fitting Script
 
-Run the fitting script `gap-fit.py` to fit the GAP model using the provided training and test data:
+Run the fitting script `gap_fit.py` to fit the GAP model using the provided training and test data:
 
 ```bash
 python gap-fit.py
@@ -198,8 +196,6 @@ pair_style hybrid/overlay tersoff lj/cut/scaling 14
 pair_coeff * * tersoff Ag.tersoff Ag
 pair_coeff 1 1 lj/cut/scaling epsilon sigma k1 k2 RcLR
 ```
-
-Make sure to replace the last line with the actual values, which are automatically extracted by the script.
 
 ---
 

@@ -143,8 +143,6 @@ print(f"Relaxed GAP energy: {relaxed_energy:.6f} eV")
 * `ase`
 * `quippy` (install via QUIP or conda build of `libatoms`)
 
-Absolutely. Here's a generalized version of the **LAMMPS input script** with a clean format for a general audience, suitable for placing in your `README.md` under the LAMMPS usage section:
-
 ---
 
 ### Using GAP with LAMMPS

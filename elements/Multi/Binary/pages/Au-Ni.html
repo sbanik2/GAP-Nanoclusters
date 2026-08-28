@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Au-Ni - Multicomponent System</title>
+    <link rel="stylesheet" href="../../../../styles.css" />
+    <style>
+        /* Scoped to this page only — does not touch the shared styles.css
+           used by the 54 element pages. Row 1 used to force both the
+           dataset plot and the parity plot into the same .plot-slot--med
+           aspect ratio (2.4118) while splitting the row 2fr:1fr, which
+           doesn't preserve a common box height across mismatched widths —
+           that's what was reading as "too big / wrong proportions" here.
+
+           The dataset plot now has 3 panels (atom-count, energy, and
+           composition distribution — no more train/test split, this is a
+           single unified dataset) and the parity plot has 2 panels
+           (energy + force, test set only, no train side). Each gets its
+           own aspect-ratio class matching its real target figsize, and the
+           grid column split (3fr:2fr) is set to exactly match those two
+           figsizes' width ratio (9.9:6.6) — so per-fr-unit height comes
+           out identical for both boxes automatically, without hardcoding
+           a fixed pixel height that would need to be re-tuned by hand.
+           See GAP_multicomponent_plots.ipynb for the figures themselves. */
+        .plot-slot--multi-dataset {
+            aspect-ratio: 3.3 / 1;   /* figsize (9.9, 3.0) -> 1386x420 @ 140dpi */
+        }
+        .plot-slot--multi-parity {
+            aspect-ratio: 2.2 / 1;   /* figsize (6.6, 3.0) -> 924x420 @ 140dpi */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Au&ndash;Ni</h1>
+        <a href="../../../../index.html" class="back-btn">← Back to Periodic Table</a>
+    </header>
+
+    <div class="container">
+
+        <!-- Basic Information Section -->
+        <section class="row full-width basic-info">
+            <h2>Basic Information</h2>
+            <div class="info-container">
+                <div class="info-stat">
+                    <span class="info-label">System</span>
+                    <span class="info-value">Au&ndash;Ni</span>
+                </div>
+                <div class="info-stat">
+                    <span class="info-label">Type</span>
+                    <span class="info-value">Binary Alloy Nanocluster</span>
+                </div>
+                <div class="info-stat">
+                    <span class="info-label">Constituent Elements</span>
+                    <span class="info-value">Au, Ni</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 1: Dataset (3 panels: atoms, energy, composition) | Energy/Force Parity (test set only, 2 panels) -->
+        <section class="row" style="display:grid; grid-template-columns:3fr 2fr; gap:10px; padding:8px;">
+            <div class="plot-slot plot-slot--multi-dataset" data-plot-target="../plots/Au-Ni/dataset.png">
+                <img src="../plots/Au-Ni/dataset.png" alt="Dataset (atoms / energy / composition)" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">Dataset (Atom Count / Energy / Composition)</div>
+                    <div class="plot-slot__dims">Target: 1386&times;420px (figsize 9.9&times;3.0 @ 140dpi)</div>
+                </div>
+            </div>
+
+            <div class="plot-slot plot-slot--multi-parity" data-plot-target="../plots/Au-Ni/energy_force_parity.png">
+                <img src="../plots/Au-Ni/energy_force_parity.png" alt="Energy / Force Parity (Test Set)" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">Energy / Force Parity (Test Set)</div>
+                    <div class="plot-slot__dims">Target: 924&times;420px (figsize 6.6&times;3.0 @ 140dpi)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 2: GAP vs Foundation Models (wide) -->
+        <section class="row one-col-panel">
+            <div class="plot-slot plot-slot--wide" data-plot-target="../plots/Au-Ni/fm_benchmark.png">
+                <img src="../plots/Au-Ni/fm_benchmark.png" alt="GAP vs. Foundation Models (Binary Test)" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">GAP vs. Foundation Models (Binary Test) <span class="placeholder-badge">new</span></div>
+                    <div class="plot-slot__dims">Target: 1610&times;387px (figsize 11.5&times;2.77 @ 140dpi)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Downloads Section -->
+        <section class="row downloads-section">
+            <h2>Model</h2>
+            <div class="download-links" style="grid-template-columns: 1fr; max-width: 200px;">
+                <div class="column">
+                    <a href="https://github.com/sbanik2/GAP-Nanoclusters/blob/main/elements/Multi/Binary/Images/Au-Ni_gap.xml?raw=true" class="download-btn gap">GAP File</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sc - Element Information</title>
+    <link rel="stylesheet" href="../../../styles.css" />
+</head>
+<body data-element="Sc">
+
+    <header>
+        <h1>Sc</h1>
+        <a href="../../../index.html" class="back-btn">← Back to Periodic Table</a>
+    </header>
+
+    <div class="container">
+
+        <!-- Basic Information Section -->
+        <section class="row full-width basic-info">
+            <h2>Basic Information</h2>
+            <div class="info-container">
+                <div class="info-stat">
+                    <span class="info-label">Element</span>
+                    <span class="info-value">Sc</span>
+                </div>
+                <div class="info-stat">
+                    <span class="info-label">Atomic Number</span>
+                    <span class="info-value">21</span>
+                </div>
+                <div class="info-stat">
+                    <span class="info-label">Type</span>
+                    <span class="info-value">Transition Metal</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 1: Dataset | Energy/Force Parity -->
+        <section class="row two-col-panels" style="display:grid; grid-template-columns:repeat(2,1fr); gap:10px; padding:8px;">
+            <div class="plot-slot plot-slot--med" data-plot-target="../plots/Sc/dataset.png">
+                <img src="../plots/Sc/dataset.png" alt="Dataset (Train/Test)" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">Dataset (Train/Test)</div>
+                    <div class="plot-slot__dims">1148&times;476px (figsize 8.2&times;3.4 @ 140dpi)</div>
+                </div>
+            </div>
+
+            <div class="plot-slot plot-slot--med" data-plot-target="../plots/Sc/energy_force_parity.png">
+                <img src="../plots/Sc/energy_force_parity.png" alt="Energy / Force Parity" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">Energy / Force Parity</div>
+                    <div class="plot-slot__dims">1148&times;476px (figsize 8.2&times;3.4 @ 140dpi)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 2: DFT vs GAP Lattice Parameter Table -->
+        <section class="row one-col-panel">
+            <div class="data-table-wrap">
+                <p class="table-title">DFT vs. GAP Lattice Parameters (Bulk Polymorphs)</p>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Polymorph</th>
+                            <th colspan="2">a (Å)</th>
+                            <th colspan="2">b (Å)</th>
+                            <th colspan="2">c (Å)</th>
+                            <th colspan="2">&alpha; (&deg;)</th>
+                            <th colspan="2">&beta; (&deg;)</th>
+                            <th colspan="2">&gamma; (&deg;)</th>
+                        </tr>
+                        <tr>
+                            <th>DFT</th><th>GAP</th>
+                            <th>DFT</th><th>GAP</th>
+                            <th>DFT</th><th>GAP</th>
+                            <th>DFT</th><th>GAP</th>
+                            <th>DFT</th><th>GAP</th>
+                            <th>DFT</th><th>GAP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="13" class="placeholder-cell">Loading&hellip;</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Row 3: GAP vs Foundation Models (wide) -->
+        <section class="row one-col-panel">
+            <div class="plot-slot plot-slot--wide" data-plot-target="../plots/Sc/fm_benchmark.png">
+                <img src="../plots/Sc/fm_benchmark.png" alt="GAP vs. Foundation Models" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">GAP vs. Foundation Models <span class="placeholder-badge">new</span></div>
+                    <div class="plot-slot__dims">Target: figsize 11.5&times;2.77 @ 140dpi (matches .plot-slot--wide)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 4: Ground State Structures | MD Simulation Temperature -->
+        <section class="row two-col-panels" style="display:grid; grid-template-columns:repeat(2,1fr); gap:10px; padding:8px; align-items:start;">
+            <div class="plot-slot plot-slot--med" data-plot-target="../plots/Sc/ground_state.png">
+                <img src="../plots/Sc/ground_state.png" alt="Ground State Structures" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">Ground State Structures</div>
+                    <div class="plot-slot__dims">1148&times;476px (figsize 8.2&times;3.4 @ 140dpi)</div>
+                </div>
+            </div>
+
+            <div class="sim-temp-box">
+                <p class="table-title">MD Simulation Temperature (K)</p>
+                <table class="sim-temp-table">
+                    <thead><tr><th>N (atoms)</th></tr></thead>
+                    <tbody><tr><td class="placeholder-cell">Loading&hellip;</td></tr></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Row 5: Dynamic Stability (RMSD) | Normal Mode Parity -->
+        <section class="row two-col-panels" style="display:grid; grid-template-columns:repeat(2,1fr); gap:10px; padding:8px;">
+            <div class="plot-slot plot-slot--med" data-plot-target="../plots/Sc/dynamics_rmsd.png">
+                <img src="../plots/Sc/dynamics_rmsd.png" alt="Dynamic Stability (RMSD)" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">Dynamic Stability (RMSD)</div>
+                    <div class="plot-slot__dims">Target: figsize 8.2&times;3.4 @ 140dpi (matches .plot-slot--med)</div>
+                </div>
+            </div>
+
+            <div class="plot-slot plot-slot--med" data-plot-target="../plots/Sc/normal_mode_parity.png">
+                <img src="../plots/Sc/normal_mode_parity.png" alt="Normal Mode Parity (GAP vs DFT)" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">Normal Mode Parity (GAP vs DFT)</div>
+                    <div class="plot-slot__dims">Target: figsize 8.2&times;3.4 @ 140dpi (matches .plot-slot--med)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Downloads Section -->
+        <section class="row downloads-section">
+            <h2>Model</h2>
+            <div class="download-links" style="grid-template-columns: 1fr; max-width: 200px;">
+                <div class="column">
+                    <a href="https://github.com/sbanik2/GAP-Nanoclusters/blob/main/gap_files/Sc_gap.xml?raw=true" class="download-btn gap">GAP File</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Data file: sets window.LATTICE_TABLE. A <script src> (not fetch()) so
+         this loads correctly even when the page is opened directly via
+         file:// — fetch() of local files is blocked by every browser under
+         file://, but <script src> is not. Colocated with this element's own
+         plots (../plots/Sc/), not a separate centralized asset folder. -->
+    <script src="../plots/Sc/lattice_table.js"></script>
+    <!-- Same pattern for window.TEMPERATURE_TABLE — the actual per-size
+         run_temperature_K read from each Dynamics run's metadata.json
+         (see GAP_element_plots.ipynb, "Plot 6"), not a recomputed formula. -->
+    <script src="../plots/Sc/temperature_table.js"></script>
+    <script>
+        // Renders window.LATTICE_TABLE (set by lattice_table.js, above)
+        // into the DFT-vs-GAP Lattice Parameter table below.
+        (function () {
+            var MAX_LATTICE_ROWS = 4;
+
+            function emptyLatticeRow() {
+                var tr = document.createElement("tr");
+                tr.className = "empty-row";
+                var html = "";
+                for (var i = 0; i < 13; i++) html += "<td>&mdash;</td>";
+                tr.innerHTML = html;
+                return tr;
+            }
+
+            function renderLattice(rows) {
+                var wrap = document.querySelector(".data-table-wrap");
+                if (!wrap) return;
+                var tbody = wrap.querySelector("tbody");
+                tbody.innerHTML = "";
+                rows = rows || [];
+
+                if (rows.length === 0) {
+                    var tr = document.createElement("tr");
+                    tr.innerHTML = '<td colspan="13" class="placeholder-cell">' +
+                        "Lattice parameter data not yet available for this element.</td>";
+                    tbody.appendChild(tr);
+                    for (var i = 1; i < MAX_LATTICE_ROWS; i++) tbody.appendChild(emptyLatticeRow());
+                    return;
+                }
+
+                rows.slice(0, MAX_LATTICE_ROWS).forEach(function (r) {
+                    var tr = document.createElement("tr");
+                    tr.innerHTML =
+                        "<td>" + r.polymorph + "</td>" +
+                        "<td>" + r.a_dft + "</td><td>" + r.a_gap + "</td>" +
+                        "<td>" + r.b_dft + "</td><td>" + r.b_gap + "</td>" +
+                        "<td>" + r.c_dft + "</td><td>" + r.c_gap + "</td>" +
+                        "<td>" + r.alpha_dft + "</td><td>" + r.alpha_gap + "</td>" +
+                        "<td>" + r.beta_dft + "</td><td>" + r.beta_gap + "</td>" +
+                        "<td>" + r.gamma_dft + "</td><td>" + r.gamma_gap + "</td>";
+                    tbody.appendChild(tr);
+                });
+                for (var j = rows.length; j < MAX_LATTICE_ROWS; j++) tbody.appendChild(emptyLatticeRow());
+            }
+
+            renderLattice(window.LATTICE_TABLE || null);
+        })();
+
+        // Renders window.TEMPERATURE_TABLE (set by temperature_table.js, above)
+        // into the MD Simulation Temperature box below. Rows are the actual
+        // per-size run_temperature_K values, chunked into 5-column tables
+        // (variable row count per element, unlike the fixed-size lattice table).
+        (function () {
+            var COLS_PER_TABLE = 5;
+
+            function renderTemperature(rows) {
+                var box = document.querySelector(".sim-temp-box");
+                if (!box) return;
+                var title = box.querySelector(".table-title");
+                box.innerHTML = "";
+                if (title) box.appendChild(title);
+                rows = rows || [];
+
+                if (rows.length === 0) {
+                    var p = document.createElement("p");
+                    p.className = "placeholder-cell";
+                    p.textContent = "Simulation temperature data not yet available for this element.";
+                    box.appendChild(p);
+                    return;
+                }
+
+                for (var start = 0; start < rows.length; start += COLS_PER_TABLE) {
+                    var chunk = rows.slice(start, start + COLS_PER_TABLE);
+                    var table = document.createElement("table");
+                    table.className = "sim-temp-table";
+
+                    var thead = document.createElement("thead");
+                    var headRow = document.createElement("tr");
+                    headRow.innerHTML = "<th>N (atoms)</th>" +
+                        chunk.map(function (r) { return "<th>N=" + r.natoms + "</th>"; }).join("");
+                    thead.appendChild(headRow);
+
+                    var tbody = document.createElement("tbody");
+                    var bodyRow = document.createElement("tr");
+                    bodyRow.innerHTML = "<td>T<sub>run</sub></td>" +
+                        chunk.map(function (r) { return "<td>" + r.trun + "</td>"; }).join("");
+                    tbody.appendChild(bodyRow);
+
+                    table.appendChild(thead);
+                    table.appendChild(tbody);
+                    box.appendChild(table);
+                }
+            }
+
+            renderTemperature(window.TEMPERATURE_TABLE || null);
+        })();
+    </script>
+
+</body>
+</html>

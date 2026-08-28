@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ag-Cu-Ni - Multicomponent System</title>
+    <link rel="stylesheet" href="../../../../styles.css" />
+    <style>
+        /* Scoped to this page only — does not touch the shared styles.css
+           used by the element pages, nor the binary pages' own scoped
+           <style> blocks. Ported from the binary system pages
+           (Ag-Au.html etc.), with ONE real change: the dataset plot has
+           4 panels here (atom-count, energy, x(2nd element), x(3rd
+           element)) instead of 3 — a ternary system has TWO free
+           compositions, not one (the first element's fraction is implied
+           by 1 - x(2nd) - x(3rd)) — so its figsize is wider: (13.2, 3.0)
+           instead of the binary page's (9.9, 3.0), same per-panel width
+           (3.3in), just one more panel.
+
+           The parity plot is UNCHANGED from the binary pages (still 2
+           panels: energy + force, test set only) — its own class/ratio is
+           reused as-is, only the dataset side needed a new class.
+
+           Row 1's grid-column split is set to match the two boxes'
+           updated width ratio: dataset:parity figsizes are now 13.2:6.6 =
+           2:1 (was 9.9:6.6 = 3:2 on the binary pages), so the columns
+           here are 2fr:1fr (was 3fr:2fr) — that's what keeps both boxes
+           the same height automatically, without hardcoding a pixel
+           value. See GAP_ternary_plots.ipynb for the figures themselves. */
+        .plot-slot--ternary-dataset {
+            aspect-ratio: 4.4 / 1;   /* figsize (13.2, 3.0) -> 1848x420 @ 140dpi */
+        }
+        .plot-slot--multi-parity {
+            aspect-ratio: 2.2 / 1;   /* figsize (6.6, 3.0) -> 924x420 @ 140dpi — unchanged from the binary pages */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Ag&ndash;Cu&ndash;Ni</h1>
+        <a href="../../../../index.html" class="back-btn">← Back to Periodic Table</a>
+    </header>
+
+    <div class="container">
+
+        <!-- Basic Information Section -->
+        <section class="row full-width basic-info">
+            <h2>Basic Information</h2>
+            <div class="info-container">
+                <div class="info-stat">
+                    <span class="info-label">System</span>
+                    <span class="info-value">Ag&ndash;Cu&ndash;Ni</span>
+                </div>
+                <div class="info-stat">
+                    <span class="info-label">Type</span>
+                    <span class="info-value">Ternary Alloy Nanocluster</span>
+                </div>
+                <div class="info-stat">
+                    <span class="info-label">Constituent Elements</span>
+                    <span class="info-value">Ag, Cu, Ni</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 1: Dataset (4 panels: atoms, energy, x(2nd), x(3rd)) | Energy/Force Parity (test set only, 2 panels) -->
+        <section class="row" style="display:grid; grid-template-columns:2fr 1fr; gap:10px; padding:8px;">
+            <div class="plot-slot plot-slot--ternary-dataset" data-plot-target="../plots/Ag-Cu-Ni/dataset.png">
+                <img src="../plots/Ag-Cu-Ni/dataset.png" alt="Dataset (atoms / energy / composition x2)" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">Dataset (Atom Count / Energy / Composition &times;2)</div>
+                    <div class="plot-slot__dims">Target: 1848&times;420px (figsize 13.2&times;3.0 @ 140dpi)</div>
+                </div>
+            </div>
+
+            <div class="plot-slot plot-slot--multi-parity" data-plot-target="../plots/Ag-Cu-Ni/energy_force_parity.png">
+                <img src="../plots/Ag-Cu-Ni/energy_force_parity.png" alt="Energy / Force Parity (Test Set)" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">Energy / Force Parity (Test Set)</div>
+                    <div class="plot-slot__dims">Target: 924&times;420px (figsize 6.6&times;3.0 @ 140dpi)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 2: GAP vs Foundation Models (wide) -->
+        <section class="row one-col-panel">
+            <div class="plot-slot plot-slot--wide" data-plot-target="../plots/Ag-Cu-Ni/fm_benchmark.png">
+                <img src="../plots/Ag-Cu-Ni/fm_benchmark.png" alt="GAP vs. Foundation Models (Ternary Test)" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">GAP vs. Foundation Models (Ternary Test) <span class="placeholder-badge">new</span></div>
+                    <div class="plot-slot__dims">Target: 1610&times;387px (figsize 11.5&times;2.77 @ 140dpi)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Downloads Section -->
+        <section class="row downloads-section">
+            <h2>Model</h2>
+            <div class="download-links" style="grid-template-columns: 1fr; max-width: 200px;">
+                <div class="column">
+                    <a href="https://github.com/sbanik2/GAP-Nanoclusters/blob/main/elements/Multi/Ternary/Images/Ag-Cu-Ni_gap.xml?raw=true" class="download-btn gap">GAP File</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

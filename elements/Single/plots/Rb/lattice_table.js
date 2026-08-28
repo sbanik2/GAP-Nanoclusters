@@ -1,0 +1,62 @@
+window.LATTICE_TABLE = [
+  {
+    "polymorph": "BCC",
+    "a_dft": 5.662,
+    "a_gap": 5.623,
+    "b_dft": 5.662,
+    "b_gap": 5.623,
+    "c_dft": 5.662,
+    "c_gap": 5.623,
+    "alpha_dft": 90.0,
+    "alpha_gap": 90.0,
+    "beta_dft": 90.0,
+    "beta_gap": 90.0,
+    "gamma_dft": 90.0,
+    "gamma_gap": 90.0
+  },
+  {
+    "polymorph": "HCP",
+    "a_dft": 5.099,
+    "a_gap": 4.991,
+    "b_dft": 5.099,
+    "b_gap": 4.991,
+    "c_dft": 16.192,
+    "c_gap": 16.263,
+    "alpha_dft": 90.0,
+    "alpha_gap": 90.0,
+    "beta_dft": 90.0,
+    "beta_gap": 90.0,
+    "gamma_dft": 120.0,
+    "gamma_gap": 120.0
+  },
+  {
+    "polymorph": "DC",
+    "a_dft": 10.348,
+    "a_gap": 10.218,
+    "b_dft": 10.348,
+    "b_gap": 10.218,
+    "c_dft": 10.348,
+    "c_gap": 10.218,
+    "alpha_dft": 90.0,
+    "alpha_gap": 90.0,
+    "beta_dft": 90.0,
+    "beta_gap": 90.0,
+    "gamma_dft": 90.0,
+    "gamma_gap": 90.0
+  },
+  {
+    "polymorph": "FCC",
+    "a_dft": 7.144,
+    "a_gap": 7.036,
+    "b_dft": 7.144,
+    "b_gap": 7.036,
+    "c_dft": 7.144,
+    "c_gap": 7.036,
+    "alpha_dft": 90.0,
+    "alpha_gap": 90.0,
+    "beta_dft": 90.0,
+    "beta_gap": 90.0,
+    "gamma_dft": 90.0,
+    "gamma_gap": 90.0
+  }
+];

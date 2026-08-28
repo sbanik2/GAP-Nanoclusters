@@ -2,7 +2,7 @@
 
 /* General Styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', 'Inter', Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -10,50 +10,59 @@ body {
 
 /* Reduce Header Height */
 header {
-    background-color: #007bff;
+    background: linear-gradient(120deg, #1f2430 0%, #334155 55%, #0f766e 130%);
     color: white;
     text-align: center;
-    padding: 8px 0; /* Reduce padding to shrink height */
-    font-size: 18px; /* Reduce text size */
+    padding: 14px 0;
+    font-size: 18px;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
 }
 
 /* Reduce the h1 inside the header */
 header h1 {
     margin: 0;
-    font-size: 24px; /* Reduce font size */
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
 }
 
 /* Reduce the Back Button */
 .back-btn {
     position: absolute;
-    left: 5px;
-    top: 5px;
-    background-color: white;
-    color: #007bff;
-    padding: 6px 12px; /* Make button smaller */
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.12);
+    color: white;
+    padding: 7px 16px;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 2px;
-    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    font-size: 13px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 /* Reduce Button Hover Effect */
 .back-btn:hover {
-    background-color: #ddd;
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-50%) scale(1.03);
 }
 
 
 /* Container */
 .container {
     width: 90%;
+    max-width: 1180px;
     margin: auto;
-    padding: 5px;
+    padding: 4px;
 }
 
 /* Row Styling */
 .row {
     background-color: white;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     padding: 0px;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -90,6 +99,35 @@ header h1 {
     padding: 3px;
 }
 
+/* Compact 3-column dashboard row (medium plot panels) */
+.three-col-panels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 8px;
+}
+
+/* Compact 2-column dashboard row (wide plot panels, paired) */
+.two-col-panels {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 8px;
+}
+
+/* Single wide plot panel row */
+.one-col-panel {
+    padding: 8px;
+}
+
+/* Grid items don't shrink below their content's natural width by default
+   (min-width:auto) — without this, wide tables/plots can blow out of their
+   column and overflow the row. Force them to respect the grid track. */
+.three-col-panels > *, .two-col-panels > * {
+    min-width: 0;
+    box-sizing: border-box;
+}
+
 
 /* Reduce height of the comparison row */
 .comparison-grid {
@@ -103,11 +141,14 @@ header h1 {
     height: auto; /* Adjust height dynamically */
 }
 
-/* Reduce the height of images */
-.comparison-grid img {
+/* Reduce the height of images.
+   NOTE: uses .row.comparison-grid (extra class) so this wins over the later,
+   equal-specificity .section-container img rule in the cascade — otherwise
+   these 5 thumbnails render full-height instead of as a compact row. */
+.row.comparison-grid img {
     width: 100%;
     max-width: 200px; /* Reduce width if necessary */
-    height: 80px; /* Set a smaller height */
+    height: 100px; /* Set a smaller height */
     object-fit: contain; /* Keep aspect ratio without cropping */
     border-radius: 5px;
     border: 1px solid #ddd;
@@ -201,35 +242,42 @@ img {
 
 /* Download Buttons */
 .download-btn {
-    padding: 8px 16px;
+    padding: 10px 22px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 700;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 22px;
     color: white;
-    transition: 0.3s ease;
-    width: 150px;       /* Adjust width as needed */
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    width: 160px;       /* Adjust width as needed */
     text-align: center;
     display: inline-block;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+    letter-spacing: 0.02em;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
 }
 
 
 /* Specific Colors for Each File Type */
 .gap {
-    background-color: #007bff;
+    background: linear-gradient(135deg, #0f766e, #134e4a);
 }
 
 .tersoff {
-    background-color: #28a745;
+    background: linear-gradient(135deg, #28a745, #1e7e34);
 }
 
 .dataset {
-    background-color: #ff5733;
+    background: linear-gradient(135deg, #ff5733, #c44121);
 }
 
-/* Hover Effects */
+/* Hover Effects (background swap handled by transform/shadow above) */
 .gap:hover {
-    background-color: #0056b3;
+    background: linear-gradient(135deg, #115e59, #0f3d3a);
 }
 
 .tersoff:hover {
@@ -259,24 +307,45 @@ img {
 .info-container {
     display: flex;
     justify-content: center;
-    gap: 50px; /* Adjust spacing between items */
-    background-color: #f8f9fa;
-    padding: 5px; /* Reduce padding for a compact look */
-    border-radius: 0px;
-    border: 1px solid #ddd;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    
+    gap: 0;
+    background-color: #f8fafc;
+    padding: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #dbe1e8;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.06);
+
     /* Adjust Width */
     width: 80%; /* Change width (adjustable) */
     max-width: 900px; /* Set a max width */
     margin: 0 auto; /* Center the container */
 }
 
+.info-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 32px;
+    border-right: 1px solid #dbe1e8;
+}
 
-/* Adjust Font */
-.info-container p {
-    font-size: 16px;
-    margin: 0;
+.info-stat:last-child {
+    border-right: none;
+}
+
+.info-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #64748b;
+    margin-bottom: 3px;
+}
+
+.info-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2430;
+    font-family: 'Segoe UI', 'Inter', Helvetica, Arial, sans-serif;
 }
 
 /* Center section for Dataset & Energy/Force */
@@ -319,4 +388,212 @@ img {
     margin: 5px 0; /* Reduce space above and below */
     padding: 0; /* Remove any extra padding */
     text-align: center;
+}
+
+/* ================= Simulation Temperature table ================= */
+.sim-temp-box {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    background-color: #f8fafc;
+    border: 1px solid #dbe1e8;
+    border-radius: 6px;
+    padding: 10px 14px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.06);
+}
+
+.sim-temp-box .table-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    text-align: center;
+    color: #1f2430;
+    letter-spacing: 0.01em;
+}
+
+.sim-temp-table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-family: 'Segoe UI', 'Inter', Helvetica, Arial, sans-serif;
+}
+
+.sim-temp-table + .sim-temp-table {
+    margin-top: 5px;
+}
+
+.sim-temp-table th, .sim-temp-table td {
+    border: 1px solid #dbe1e8;
+    padding: 5px 3px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.sim-temp-table th {
+    background-color: #334155;
+    color: #f1f5f9;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.sim-temp-table tbody td {
+    color: #1f2430;
+    font-weight: 500;
+}
+
+/* ================= Data table (DFT vs GAP lattice parameters) ================= */
+/* Fixed 4-row allocation so every element page reserves identical vertical
+   space regardless of how many polymorphs (2-4) that element actually has. */
+.data-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 4px;
+    table-layout: fixed;
+    font-family: 'Segoe UI', 'Inter', Helvetica, Arial, sans-serif;
+}
+
+table.data-table th, table.data-table td {
+    border: 1px solid #dbe1e8;
+    padding: 5px 4px;
+    text-align: center;
+    font-size: 11.5px;
+}
+
+table.data-table th {
+    background-color: #0f766e;
+    color: #f0fdfa;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+table.data-table tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+table.data-table tr.empty-row td {
+    color: #c3c9d4;
+}
+
+.placeholder-cell {
+    color: #9aa1af;
+    font-style: italic;
+    font-size: 12px;
+}
+
+/* Badge marking a section that currently holds dummy/placeholder data */
+.placeholder-badge {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #a15c00;
+    background-color: #ffe9c2;
+    border: 1px solid #f0c07a;
+    border-radius: 9px;
+    padding: 1px 7px;
+    vertical-align: middle;
+    margin-left: 6px;
+}
+
+/* ================= Blank plot placeholders (compact dashboard) ================= */
+/* Static placeholder for a plot that hasn't been generated at its new,
+   compact target size yet. Swap for a real <img> once available. */
+.plot-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: repeating-linear-gradient(
+        45deg, #f4f5f8, #f4f5f8 10px, #eceef2 10px, #eceef2 20px
+    );
+    border: 1.5px dashed #c3c9d4;
+    border-radius: 6px;
+    color: #9aa1af;
+    text-align: center;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+.plot-slot__icon {
+    font-size: 22px;
+    line-height: 1;
+    margin-bottom: 4px;
+    color: #b6bcc7;
+}
+
+.plot-slot__label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #7d8492;
+}
+
+.plot-slot__dims {
+    font-size: 10.5px;
+    margin-top: 2px;
+    color: #a8adb8;
+}
+
+/* Aspect-ratio locks, not fixed heights.
+   Width is still fluid (comes from the grid column), but height now derives
+   from that width via the SAME ratio the matplotlib figure is saved at, so
+   object-fit:cover never needs to crop anything, at any viewport size:
+
+     .plot-slot--med   -> dataset.png, ground_state.png, dynamics_rmsd.png,
+                           normal_mode_parity.png: figsize=(8.2, 3.4)  -> 8.2/3.4  = 2.4118
+     .plot-slot--wide  -> fm_benchmark.png:        figsize=(11.5, 2.77) -> 11.5/2.77 = 4.1516
+     .plot-slot--small -> (unused so far; keep a sane default, adjust when a
+                           figure actually targets this slot)
+
+   If you regenerate a plot at a different figsize, update the matching
+   ratio here to match — the two must always be kept in lock-step. */
+.plot-slot--wide {
+    aspect-ratio: 4.1516 / 1;
+}
+
+.plot-slot--med {
+    aspect-ratio: 2.4118 / 1;
+}
+
+.plot-slot--small {
+    aspect-ratio: 2.4118 / 1;
+}
+
+/* Real plot image support: the <img> is always absolutely positioned to
+   fill the box (so it stretches correctly regardless of native resolution),
+   sitting on top of the dashed placeholder. If the PNG doesn't exist yet at
+   its plots/<El>/ path, onerror removes the <img> and the placeholder shows
+   through underneath — no JS class-toggle timing to rely on. */
+.plot-slot {
+    position: relative;
+    overflow: hidden;
+}
+
+.plot-slot img.plot-real-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    margin: 0 !important;
+    /* fill: stretch the image to exactly fill its box, no cropping and no
+       letterboxing. This only distorts noticeably if the box's aspect-ratio
+       (.plot-slot--med/--wide, above) doesn't match the PNG's real pixel
+       aspect ratio — so the two are now kept in lock-step with the
+       notebook's figsize*dpi output (see GAP_element_plots.ipynb, cell 2:
+       BOX_FIGSIZE). Match a new plot's box class to its figsize there and
+       fill introduces ~0 distortion. */
+    object-fit: fill;
+    border-radius: 6px;
+    background: white;
+    z-index: 2;
 }

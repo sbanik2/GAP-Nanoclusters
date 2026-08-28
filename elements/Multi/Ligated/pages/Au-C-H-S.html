@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Au-C-H-S - Multicomponent System</title>
+    <link rel="stylesheet" href="../../../../styles.css" />
+    <style>
+        /* Scoped to this page only — does not touch the shared styles.css
+           or the binary/ternary pages' own scoped <style> blocks.
+
+           This page differs from the binary/ternary pages in two ways:
+           1. No foundation-model comparison exists for this system, so
+              there is no third fm_benchmark.png row at all.
+           2. The dataset plot has 5 panels here (atom-count, energy,
+              x(C), x(H), x(S) — three free compositions, since a
+              4-element system's first element's fraction is implied by
+              1 - x(2nd) - x(3rd) - x(4th)) instead of the ternary pages'
+              4, so its figsize is wider still: (16.5, 3.0) vs (13.2, 3.0).
+
+           With no FM row to fill a 2fr:1fr (or similar) grid alongside a
+           much-wider dataset box, there's nothing left to compensate a
+           column ratio against — dataset and parity are simply stacked as
+           two independent full-width rows instead of sharing one row's
+           grid columns. See GAP_quaternary_plots.ipynb for the figures
+           themselves. */
+        .plot-slot--quaternary-dataset {
+            aspect-ratio: 5.5 / 1;   /* figsize (16.5, 3.0) -> 2310x420 @ 140dpi */
+        }
+        .plot-slot--quaternary-parity {
+            aspect-ratio: 2.2 / 1;   /* figsize (6.6, 3.0) -> 924x420 @ 140dpi — unchanged from the ternary pages */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Au&ndash;C&ndash;H&ndash;S</h1>
+        <a href="../../../../index.html" class="back-btn">← Back to Periodic Table</a>
+    </header>
+
+    <div class="container">
+
+        <!-- Basic Information Section -->
+        <section class="row full-width basic-info">
+            <h2>Basic Information</h2>
+            <div class="info-container">
+                <div class="info-stat">
+                    <span class="info-label">System</span>
+                    <span class="info-value">Au&ndash;C&ndash;H&ndash;S</span>
+                </div>
+                <div class="info-stat">
+                    <span class="info-label">Type</span>
+                    <span class="info-value">Quaternary Ligated Nanocluster</span>
+                </div>
+                <div class="info-stat">
+                    <span class="info-label">Constituent Elements</span>
+                    <span class="info-value">Au, C, H, S</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 1: Dataset (5 panels: atoms, energy, x(C), x(H), x(S)) -->
+        <section class="row one-col-panel">
+            <div class="plot-slot plot-slot--quaternary-dataset" data-plot-target="../plots/Au-C-H-S/dataset.png">
+                <img src="../plots/Au-C-H-S/dataset.png" alt="Dataset (atoms / energy / composition x3)" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">Dataset (Atom Count / Energy / Composition &times;3)</div>
+                    <div class="plot-slot__dims">Target: 2310&times;420px (figsize 16.5&times;3.0 @ 140dpi)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Row 2: Energy/Force Parity (test set only, 2 panels) -->
+        <section class="row one-col-panel">
+            <div class="plot-slot plot-slot--quaternary-parity" data-plot-target="../plots/Au-C-H-S/energy_force_parity.png">
+                <img src="../plots/Au-C-H-S/energy_force_parity.png" alt="Energy / Force Parity (Test Set)" class="plot-real-img" onerror="this.remove()">
+                <div class="plot-slot__placeholder">
+                    <div class="plot-slot__icon">▦</div>
+                    <div class="plot-slot__label">Energy / Force Parity (Test Set)</div>
+                    <div class="plot-slot__dims">Target: 924&times;420px (figsize 6.6&times;3.0 @ 140dpi)</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Downloads Section -->
+        <section class="row downloads-section">
+            <h2>Model</h2>
+            <div class="download-links" style="grid-template-columns: 1fr; max-width: 200px;">
+                <div class="column">
+                    <a href="https://github.com/sbanik2/GAP-Nanoclusters/blob/main/elements/Multi/Quaternary/Images/Au-C-H-S_gap.xml?raw=true" class="download-btn gap">GAP File</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

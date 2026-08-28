@@ -4,99 +4,84 @@
   <img src="./ptable.png" alt="GAP Nanocluster Overview" width="800">
 </p>
 
-This repository contains **Gaussian Approximation Potential (GAP)** models for **54 elemental nanocluster systems** across the periodic table. For each element, the following are provided:
+This repository contains **Gaussian Approximation Potential (GAP)** models for **54 elemental nanocluster systems** across the periodic table, trained on a dataset of over 234K nanocluster configurations. It also includes GAP models for **6 binary** and **3 ternary alloy nanoclusters** (~8K and ~4K configurations respectively), and a **quaternary ligated Au–C–H–S system**. These models accompany the paper *"Generalized Machine Learning Potential Models for Elemental Nanoclusters."*
+
+For each system, the following are provided:
 
 * GAP potential model files
-* Tersoff potential files for comparison
 * Performance metrics and dataset statistics
 * Energy and force parity plots
 * Results of dynamic stability tests
-* Normal mode analysis
-* Lattice parameter and cohesive energy ordering of ground state polytypes
-* Comparison of energy and force errors with Tersoff models [Manna *et al.* (2022)](https://www.nature.com/articles/s41467-021-27849-6)
-* Lattice parameter and cohesive energy prediction comparisons
-
+* Normal mode analysis (single-element systems)
+* Lattice parameter and cohesive energy ordering of ground state polytypes (single-element systems)
+* Comparison against 26 state-of-the-art universal foundation MLIPs
 
 Webpage 👉 [sbanik2.github.io/GAP-Nanoclusters/](https://sbanik2.github.io/GAP-Nanoclusters/)
+
+---
+
+## Repository Structure
+
+```
+GAP-Nanoclusters/
+├── index.html              # Interactive browser homepage
+├── styles.css               # Site styling
+├── ptable.png                # Periodic-table overview graphic
+├── tree.py                   # Utility script used to print this tree
+├── gap_models.zip             # All fitted GAP model .xml files — download from Zenodo, see Dataset section
+├── qcd_relaxed/                # QCD structures relaxed with the fitted GAP models
+├── notebooks/                   # Notebooks used to generate the plots/pages in this repo
+├── additional/
+│   └── tersoff_files/             # Tersoff-HyBOP potential parameters, see below
+└── elements/
+    ├── Single/                      # 54 elemental nanocluster systems
+    │   ├── pages/                     # One HTML page per element
+    │   ├── plots/                      # Plots for each element
+    │   └── Images/                      # Element-page images
+    └── Multi/                              # Multi-component systems (same pages/plots layout per system as Single)
+        ├── Binary/                           # 6 binary alloy systems
+        ├── Ternary/                            # 3 ternary alloy systems
+        └── Ligated/                              # Quaternary ligated Au-C-H-S system
+```
+
+> **Note:** this repo was previously organized around single-element systems only (`fit_a_model/`, `gap_files/`, `plots/<Element>/`, `qcd_gap_relaxed/`). It's been restructured to add the binary/ternary/ligated multi-component systems above — if you have scripts pointing at the old paths, update them to the layout above.
+
 ---
 
 ## Dataset
-
 
 The complete training and test datasets are made available **upon request**.
 
 The **ground state polymorphs** of the elemental nanoclusters and a portion of the **validation dataset** are publicly accessible via the [Quantum Cluster Database (QCD)](https://muellergroup.jhu.edu/qcd/).
 
-Additionally, all QCD configurations **relaxed using the GAP model** are provided in this repository under the `qcd_gap_relaxed/` directory.
+Additionally, all QCD configurations **relaxed using the GAP model** are provided in this repository under the `qcd_relaxed/` directory.
 
+### GAP model files (`gap_models.zip`)
+
+The fitted GAP model `.xml` files are **no longer hosted directly on GitHub** — download `gap_models.zip` from Zenodo instead:
+
+> 📦 **[10.5281/zenodo.22147166](https://doi.org/10.5281/zenodo.22147166)**
+
+Unzip it at the repo root. Inside, models are organized by tier and system, matching the `elements/` layout above:
+
+```
+gap_models/
+├── Single/<Element>/<Element>_gap.xml
+├── Binary/<System>/<System>_gap.xml
+├── Ternary/<System>/<System>_gap.xml
+└── Ligated/<System>/<System>_gap.xml
+```
+
+e.g. `gap_models/Single/Ag/Ag_gap.xml`, `gap_models/Binary/Ag-Au/Ag-Au_gap.xml`.
 
 ---
-
 
 ## Fitting a GAP Model
 
-#### 1. Prerequisites
-
-Before fitting the GAP model, ensure that the **QUIP package** ([QUIP Documentation](https://libatoms.github.io/QUIP/)) and **GAP fitting utilities** are compiled and installed on the system. The GAP fitting script requires the QUIP package with the `gap_fit` utility.
-
-#### 2. Example Workflow for Fitting a GAP Model
-
-Navigate to the `fit_a_model` path within the repository. This directory contains all the necessary files to fit a GAP model for an elemental system (e.g., Ag).
-
-In the `fit_a_model` directory, the file `gap-fit.py` contains the necessary code to fit a GAP model using the training and test data provided in the directory.
-
-#### 3. Input Files and Directory Structure
-
-To run the model fitting process, the following files must be provided in the directory:
-
-* **`train.xyz`**: Training data file containing atomic configurations and energies.
-* **`test.xyz`**: Test data file for validation.
-* **`ground_state.xyz`**: Ground-state structure file.
-* **`param.txt`**: A file containing the fitting parameters.
-
-#### 4. `param.txt` File Structure
-
-The `param.txt` file contains the following comma-separated values:
-
-```
-4.75, 0.005, 0.0001, 5
-```
-
-##### Parameter Breakdown:
-
-1. **Cutoff (`4.75`)**: Defines the **cutoff distance** used.
-2. **`sigma_energy` for Cluster (`0.005`)**: Controls the **regularization** corresponding to energy for the **clusters**.
-3. **`sigma_energy` for Bulk (`0.0001`)**: Controls the **regularization** corresponding to energy for the **bulk data**.
-4. **Scaling Factor (`5`)**: This is the **multiplication factor** for **sigma\_force**. The relationship is:
-   `sigma_force = Scaling factor * sigma_energy` for a given modality.
-
-The `param.txt` for all the elements used for fitting is provided in the `fit_a_model/All_parameters` directory.
-
-These values are used in the **`gap-fit.py`** script to define the fitting parameters. The **cutoff** and **sigma values** are applied based on the **modalities** (`cluster`, `bulk`) for energy and force predictions.
-
-#### 5. Running the GAP Fitting Script
-
-Run the fitting script `gap_fit.py` to fit the GAP model using the provided training and test data:
-
-```bash
-python gap-fit.py
-```
-
-#### 6. Output Files
-
-Once the script runs successfully, it will generate the following files in the directory:
-
-* **`gap_model.xml`**: The output GAP model file generated from the fitting process.
-* **`E_pred.json`**: A JSON file containing the predicted energy values from the fitted GAP model.
-* **`F_pred.json`**: A JSON file containing the predicted forces from the fitted GAP model.
-* **`lattice_GS.json`**: A JSON file containing the lattice parameters and cohesive energy for the ground-state structures.
-
-#### 7. Additional Analysis
-
-After the model fitting, further analysis can be performed using the provided **`Analysis.ipynb`** notebook. This notebook is designed to help analyze the predicted values, including energy, force, and lattice parameters, and visualize the results.
-
+*(This section is being rewritten around an updated fitting script/directory structure — check back soon.)*
 
 ---
+
 ## Usage
 
 ### Relaxing Structures with GAP
@@ -112,8 +97,8 @@ from quippy.potential import Potential
 
 # --- Settings ---
 element = "Ag"  # Replace with your element symbol
-structure_path = f"{element}_structure.xyz"  # Input structure file
-gap_file = f"./gap_files/{element}.xml"      # Path to the GAP model file
+structure_path = f"{element}_structure.xyz"           # Input structure file
+gap_file = f"./gap_models/Single/{element}/{element}_gap.xml"  # Path to the GAP model file (from gap_models.zip, see Dataset section)
 
 # --- Read structure ---
 atoms = read(structure_path)
@@ -131,7 +116,9 @@ relaxed_energy = atoms.get_potential_energy()
 print(f"Relaxed GAP energy: {relaxed_energy:.6f} eV")
 ```
 
-### 📌 Requirements
+For a binary/ternary/ligated system, just point `gap_file` at the matching path under `gap_models/Binary/`, `gap_models/Ternary/`, or `gap_models/Ligated/` instead.
+
+#### 📌 Requirements
 
 * `ase`
 * `quippy` (install via QUIP or conda build of `libatoms`)
@@ -140,7 +127,7 @@ print(f"Relaxed GAP energy: {relaxed_energy:.6f} eV")
 
 ### Using GAP with LAMMPS
 
-To perform structure relaxation with a GAP model in LAMMPS, use the following template. Ensure your **[LAMMPS](https://www.lammps.org/#gsc.tab=0)**  build includes the **QUIP interface**.
+To perform structure relaxation with a GAP model in LAMMPS, use the following template. Ensure your **[LAMMPS](https://www.lammps.org/#gsc.tab=0)** build includes the **QUIP interface**.
 
 ```lammps
 dimension       3
@@ -152,7 +139,7 @@ read_data       structure.geo   # Replace with your LAMMPS data file
 
 
 pair_style      quip
-pair_coeff      * * path/to/your_gap_model.xml "Potential xml_label=Your_Label" atomic_number
+pair_coeff      * * gap_models/Single/Ag/Ag_gap.xml "Potential xml_label=Your_Label" atomic_number
 
 neighbor        2.0 bin
 neigh_modify    every 2 delay 0 check no
@@ -163,39 +150,13 @@ minimize        1.0e-10 1.0e-10 10000 10000
 write_data      relaxed_structure.data
 ```
 
-
 ---
 
-### Using Tersoff-HyBOP Potentials in LAMMPS
+## Tersoff-HyBOP Potentials
 
-The Tersoff-HyBOP model used here consists of **two components**:
+Tersoff-HyBOP parameter files, the LAMMPS setup used to compare against them, and their own citation live in a separate README:
 
-* A **Tersoff-style (BOP-like)** three-body interaction potential
-* A **Lennard-Jones (LJ) scaling** component for long-range dispersion interactions
-
-All model parameters are stored in individual `.json` files per element . Each file includes:
-
-* A `tersoff` section with named Tersoff parameters
-* A `scaling` section with `epsilon`, `sigma`, `k1`, `k2`, and `RcLR` used in `lj/cut/scaling`
-
-To convert these `.json` files into **LAMMPS-ready inputs**, use the Jupyter notebook:
-
-> 📓 `tersoff_lammps_template.ipynb`
-
-This notebook automates:
-
-* Generating the `.tersoff` file used with `pair_style tersoff`
-* Writing a matching `LAMMPS input script (.in)` that uses `hybrid/overlay` with `tersoff` and `lj/cut/scaling` styles.
-
----
-
-####  LAMMPS Setup example:
-
-```lammps
-pair_style hybrid/overlay tersoff lj/cut/scaling 14
-pair_coeff * * tersoff Ag.tersoff Ag
-pair_coeff 1 1 lj/cut/scaling epsilon sigma k1 k2 0 RcLR
-```
+> 📄 [`additional/tersoff_files/README.md`](./additional/tersoff_files/README.md)
 
 ---
 
@@ -203,35 +164,17 @@ pair_coeff 1 1 lj/cut/scaling epsilon sigma k1 k2 0 RcLR
 
 Please cite the following if you use this repository, or models:
 
-###  To cite the **GAP models** for elemental nanoclusters:
+### To cite the **GAP models** for elemental nanoclusters:
 
 ```bibtex
-@article{banik2024generalized,
+@article{banik2026generalized,
   title     = {Generalized Machine Learning Potential Models for Elemental Nanoclusters},
-  author    = {Banik, Suvo and Aggarwal, Abhishek and Manna, Sukriti and Dutta, Partha Sarathi and Sankaranarayanan, Subramanian KRS},
+  author    = {Banik, Suvo and Manna, Sukriti and Aggarwal, Abhishek and Adekoya-Olowofela, Abibat and Dutta, Partha Sarathi and Sankaranarayanan, Subramanian KRS},
   journal   = ,
-  year      = {2024}
+  year      = {2026}
 }
 ```
 
+### To cite the **Tersoff-HyBOP models**:
 
-###  To cite the **Tersoff-HyBOP models**:
-
-```bibtex
-@article{manna2022learning,
-  title     = {Learning in continuous action space for developing high dimensional potential energy models},
-  author    = {Manna, Sukriti and Loeffler, Troy D and Batra, Rohit and Banik, Suvo and Chan, Henry and Varughese, Bilvin and Sasikumar, Kiran and Sternberg, Michael and Peterka, Tom and Cherukara, Mathew J and others},
-  journal   = {Nature Communications},
-  volume    = {13},
-  number    = {1},
-  pages     = {368},
-  year      = {2022},
-  publisher = {Nature Publishing Group UK London},
-  doi       = {10.1038/s41467-021-27885-0}
-}
-```
-
----
-
-
-
+See [`additional/tersoff_files/README.md`](./additional/tersoff_files/README.md#citation).
